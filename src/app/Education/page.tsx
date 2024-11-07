@@ -10,7 +10,7 @@ const caveatBrush = Caveat_Brush({
 })
 const Education = () => {
   return (
-    <div id='education' className='flex justify-center flex-col border-b-[0.5rem] border-b-amber-200 bg-yellow-800 items-center'>
+    <div id='education' className='flex justify-center flex-col border-t-[0.5rem] border-b-[0.5rem] bg-yellow-800 items-center border-b-amber-200 border-t-amber-200'>
       <h1 className={`text-5xl font-sans m-5 font-bold text-white ${caveatBrush.className} max-[400px]:text-4xl`}>EDUC<span className='text-yellow-400'>ATION</span></h1>
 
     <div className='w-[90%] m-10'>
