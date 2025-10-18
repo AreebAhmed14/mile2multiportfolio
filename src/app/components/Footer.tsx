@@ -30,7 +30,7 @@ const Footer = () => {
 
         <div className="flex items-center">
           <TbWorld className="text-3xl max-[1150px]:text-[1.5rem] text-white mr-2 max-[560px]:text-[1.3rem] max-[900px]:text-[2rem] font-bold" />
-          <p className="text-2xl max-[1150px]:text-[1.3rem] text-yellow-400 max-[700px]:text-[1.2rem] max-[900px]:text-[1.5rem] max-[560px]:text-[1rem] max-[560px]:m-0 m-2 font-sans font-bold">areeb<span className="text-white">ixpoint</span>.vercel.<span className="text-white">app</span></p>
+          <p className="text-2xl max-[1150px]:text-[1.3rem] text-yellow-400 max-[700px]:text-[1.2rem] max-[900px]:text-[1.5rem] max-[560px]:text-[1rem] max-[560px]:m-0 m-2 font-sans font-bold">areeb<span className="text-white">ix-point</span>.vercel.<span className="text-white">app</span></p>
         </div>
 
         <div className="flex items-center">

@@ -20,7 +20,7 @@ const Education = () => {
 
       <div className='w-[90%] m-5'>
       <h1 className='text-3xl  font-bold font-sans text-yellow-400 max-[500px]:text-2xl'>INTERMEDIATE</h1>
-      <p className='text-[1.8rem] max-[850px]:text-[1.5rem] text-white font-bold font-sans max-[750px]:text-xl max-[500px]:text-[1.2rem] max-[400px]:text-[1.1rem]'>Currently I am pursuing my second year of intermediate studies. During this phase I am focusing on deepening my understanding of subjects like physics chemistry and maths while continuing to explore my passion for technology and computer science.</p>
+      <p className='text-[1.8rem] max-[850px]:text-[1.5rem] text-white font-bold font-sans max-[750px]:text-xl max-[500px]:text-[1.2rem] max-[400px]:text-[1.1rem]'>I have successfully completed my second year of intermediate studies with a 77% score. During this phase, I focused on strengthening my understanding of core subjects like Physics, Chemistry, and Mathematics while also exploring my passion for technology and computer science.</p>
       </div>
 
       <div className='w-[90%] m-5'>
@@ -31,6 +31,11 @@ const Education = () => {
       <div className='w-[90%] m-5'>
       <h1 className='text-3xl  font-bold font-sans text-yellow-400 max-[500px]:text-2xl'>GEN AI</h1>
       <p className='text-[1.8rem] max-[850px]:text-[1.5rem] text-white font-bold font-sans max-[750px]:text-xl max-[500px]:text-[1.2rem] max-[400px]:text-[1.1rem]'>As part of my ongoing professional development I am also a student of Generative AI under the Governor Sindh IT Initiative. This program has provided me a understanding of AI technologies<span className='max-[400px]:hidden'>particularly in creating generative models</span>  and exploring applications in various fields.</p>
+      </div>
+
+      <div className='w-[90%] m-5'>
+      <h1 className='text-3xl  font-bold font-sans text-yellow-400 max-[500px]:text-2xl'>{`BACHELOR'S`}</h1>
+      <p className='text-[1.8rem] max-[850px]:text-[1.5rem] text-white font-bold font-sans max-[750px]:text-xl max-[500px]:text-[1.2rem] max-[400px]:text-[1.1rem]'>I am now pursuing a degree in Chemical Engineering at NED University of Engineering and Technology. This new chapter marks the beginning of my journey into a field that combines scientific principles with real-world applications.</p>
       </div>
 
 
