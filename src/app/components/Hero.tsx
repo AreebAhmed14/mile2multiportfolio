@@ -50,7 +50,7 @@ const Hero = () => {
       </div>
       <div className="flex justify-center flex-col max-[850px]:m-7 max-[850px]:w-[25rem] max-[850px]:h-[70vh] h-[62vh] w-[25rem] max-[1100px]:w-[22rem] max-[930px]:w-[20rem] max-[480px]:w-[20rem] shadow-black max-[480px]:h-[65vh] border-[0.5rem] max-[400px]:w-[auto] max-[400px]:h-[auto] overflow-hidden border-yellow-800 shadow-2xl rounded-[50%] ">
         <Image
-          src={"/static/newme.jpg"}
+          src={"/static/me.jpg"}
           alt=""
           width={500}
           height={500}
