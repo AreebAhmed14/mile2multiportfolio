@@ -1,106 +1,117 @@
 "use client"
-import React, { useState } from "react";
-import { TiThMenuOutline } from "react-icons/ti";
-import Link from "next/link";
-import { ImCross } from "react-icons/im";
-import {Caveat} from "next/font/google"
-import {Caveat_Brush} from "next/font/google"
-const headerfont = Caveat({
-  subsets:["latin"],
-  // weight:["400"]
-})
-const navfont = Caveat_Brush({
-  subsets:["latin"],
-  weight:["400"]
-})
+
+import React, { useState } from "react"
+import Link from "next/link"
+import { motion, AnimatePresence } from "framer-motion"
+import { TiThMenuOutline } from "react-icons/ti"
+import { ImCross } from "react-icons/im"
+import { Caveat, Caveat_Brush } from "next/font/google"
+
+const headerfont = Caveat({ subsets: ["latin"] })
+const navfont = Caveat_Brush({ subsets: ["latin"], weight: ["400"] })
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    {
-      if(isMenuOpen==false){
-        setIsMenuOpen(true);
-      }
-      else{
-        setIsMenuOpen(false);
-      }
-    }
-  };
-  function menuremove(){
-    setIsMenuOpen(false);
-  }
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <div
-    id="home"
-    className="w-full h-[15vh] flex justify-between items-center bg-yellow-800"
-  >
-    
-    <h1 className={`ml-5 text-[2.5rem] max-[809px]:text-[2.1rem] max-[400px]:text-[2rem] max-[400px]:ml-3 max-[350px]:text-[1.8rem] font-sans text-white font-bold ${headerfont.className}`}>
-     <span className="text-yellow-400">AR</span>EEB<span className="text-yellow-400">IX IN</span>FO
-    </h1>
-    <ul className="flex m-[1rem] max-[790px]:hidden">
-      <Link href={"/"}>
-        <li className={`m-5 ${headerfont.className} text-[1.6rem] transition-all hover:scale-[1.2] hover:text-yellow-300 duration-700 cursor-pointer font-sans font-bold max-[930px]:text-[1.1rem] text-white`}>
-          Home
-        </li>
-      </Link>
-      <Link href={"/"}>
-        <li className={`m-5 text-[1.6rem] transition-all hover:scale-[1.2] hover:text-yellow-300 duration-700 cursor-pointer font-sans font-bold max-[930px]:text-[1.1rem] text-white ${headerfont.className}`}>
-          About
-        </li>
-      </Link>
-      <Link href={"/Education"}>
-        <li className={`m-5 ${headerfont.className} text-[1.6rem] transition-all hover:scale-[1.2] hover:text-yellow-300 duration-700 cursor-pointer font-sans font-bold max-[930px]:text-[1.1rem] text-white`}>
-          Education
-        </li>
-      </Link>
-      <Link href={"/"}>
-        <li className={`m-5 ${headerfont.className} text-[1.6rem] transition-all hover:scale-[1.2] hover:text-yellow-300 duration-700 cursor-pointer font-sans font-bold max-[930px]:text-[1.1rem] text-white`}>
-          Skills
-        </li>
-      </Link>
-      <Link href={"/Projects"}>
-        <li className={`m-5 ${headerfont.className} text-[1.6rem] transition-all hover:scale-[1.2] hover:text-yellow-300 duration-700 cursor-pointer font-sans font-bold max-[930px]:text-[1.1rem] text-white`}>
-          Projects
-        </li>
-      </Link>
-    </ul>
+    <header
+      id="home"
+      className="w-full h-[15vh] flex justify-between items-center px-5
+      bg-gradient-to-r from-[#020617] via-[#1e293b] to-[#020617]
+      border-b-[3px] border-amber-400 sticky top-0 z-50"
+    >
+      {/* Logo */}
+      <motion.h1
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className={`text-[2.5rem] max-[809px]:text-[2.1rem] font-bold text-white ${headerfont.className}`}
+      >
+        <span className="text-amber-400">AR</span>EEB
+        <span className="text-amber-400">IX IN</span>FO
+      </motion.h1>
 
-      
-      <TiThMenuOutline 
-      onClick={toggleMenu} 
-      className="text-[2.2rem] font-bold hidden max-[790px]:block max-[400px]:text-[1.9rem] max-[350px]:text-[1.7rem] cursor-pointer mr-5 text-white"
-    />
+      {/* Desktop Nav */}
+      <ul className="flex gap-8 max-[790px]:hidden">
+        {["Home", "About", "Education", "Skills", "Projects"].map(
+          (item, index) => (
+            <Link
+              key={index}
+              href={item === "Education" ? "/Education" : item === "Projects" ? "/Projects" : "/"}
+            >
+              <motion.li
+                whileHover={{ scale: 1.15 }}
+                className={`relative text-white font-bold text-[1.4rem] cursor-pointer ${headerfont.className}`}
+              >
+                {item}
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-amber-400 transition-all duration-300 group-hover:w-full"></span>
+              </motion.li>
+            </Link>
+          )
+        )}
+      </ul>
 
-      <div className={`${isMenuOpen ? "block" : "hidden"} w-full h-[100vh] transition-all duration-[2s] bg-yellow-800 absolute top-0 left-0`}>
-    <div className="w-full h-[15vh] flex justify-end items-center bg-yellow-800 bg-opacity-40 border-b-[0.3rem] border-yellow-400">
-    <ImCross onClick={toggleMenu} className="mr-6 text-2xl text-white" />
-    </div>
-  
-    <ul className="flex border-b-[0.3rem] border-yellow-400 shadow-2xl shadow-black justify-center items-center flex-col">
+      {/* Menu Icon */}
+      <motion.div
+        whileTap={{ scale: 0.9 }}
+        onClick={() => setIsMenuOpen(true)}
+        className="hidden max-[790px]:block cursor-pointer text-white"
+      >
+        <TiThMenuOutline className="text-[2.2rem]" />
+      </motion.div>
 
-      <Link href={"/"}>
-      <li onClick={menuremove} className={`w-full h-[15vh] flex justify-center items-center font-bold text-yellow-400 border-b-[0] border-white my-1 text-2xl ${navfont.className}`}>HOME</li>
-      </Link>
-      <Link href={"/"}>
-      <li onClick={menuremove} className={`w-full h-[15vh] flex justify-center items-center font-bold text-yellow-400 border-b-[0] border-white my-1 text-2xl ${navfont.className}`}>ABOUT</li>
-      </Link>
-      <Link href={"/Education"}>
-      <li onClick={menuremove} className={`w-full h-[15vh] flex justify-center items-center font-bold text-yellow-400 border-b-[0] border-white my-1 text-2xl ${navfont.className}`}>EDUCATION</li>
-      </Link>
-      <Link onClick={menuremove} href={"/"}>
-      <li className={`w-full h-[15vh] flex justify-center items-center font-bold text-yellow-400 border-b-[0] border-white my-1 text-2xl ${navfont.className}`}>SKILLS</li>
-      </Link>
-      <Link onClick={menuremove} href={"/Projects"}>
-      <li className={`w-full h-[15vh] flex justify-center items-center font-bold text-yellow-400 border-b-[0] border-white my-1 text-2xl ${navfont.className}`}>PROJECTS</li>
-      </Link>
-    </ul>
-      </div>
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.4 }}
+            className="fixed top-0 left-0 w-full h-screen
+            bg-gradient-to-b from-[#020617] to-[#1e293b]"
+          >
+            <div className="h-[15vh] flex justify-end items-center px-6 border-b border-amber-400">
+              <motion.div
+                whileHover={{ rotate: 90 }}
+                onClick={() => setIsMenuOpen(false)}
+                className="cursor-pointer"
+              >
+                <ImCross className="text-2xl text-white" />
+              </motion.div>
+            </div>
 
-    </div>
-  );
-};
+            <ul className="flex flex-col items-center justify-center h-[85vh] gap-10">
+              {["HOME", "ABOUT", "EDUCATION", "SKILLS", "PROJECTS"].map(
+                (item, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`text-3xl text-amber-400 font-bold cursor-pointer ${navfont.className}`}
+                  >
+                    <Link
+                      href={
+                        item === "EDUCATION"
+                          ? "/Education"
+                          : item === "PROJECTS"
+                          ? "/Projects"
+                          : "/"
+                      }
+                    >
+                      {item}
+                    </Link>
+                  </motion.li>
+                )
+              )}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  )
+}
 
-export default Header;
+export default Header

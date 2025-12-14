@@ -1,52 +1,113 @@
-import React from "react";
-import { RiWhatsappFill } from "react-icons/ri";
-import { MdEmail } from "react-icons/md";
-import { TbWorld } from "react-icons/tb";
-import {Caveat_Brush} from "next/font/google"
+"use client"
+
+import React from "react"
+import { motion } from "framer-motion"
+import { RiWhatsappFill } from "react-icons/ri"
+import { MdEmail } from "react-icons/md"
+import { TbWorld } from "react-icons/tb"
+import { Caveat_Brush } from "next/font/google"
+
 const headerfont = Caveat_Brush({
-  subsets:["latin"],
-  weight:["400"]
+  subsets: ["latin"],
+  weight: ["400"],
 })
+
+const item = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+}
 
 const Footer = () => {
   return (
-    <div className="w-full h-[40vh] flex justify-around items-center bg-yellow-800 max-[900px]:flex-col max-[1150px]:h-auto">
-      <div>
-        <h1 className={`text-5xl max-[1150px]:text-4xl max-[700px]:text-5xl max-[900px]:text-6xl max-[560px]:text-4xl max-[900px]:m-7 ${headerfont.className} font-bold text-yellow-400`}>
-        <span className="text-white">AR</span>EEB<span className="text-white">IX IN</span>FO
-          <p className=" text-xl font-sans font-bold max-[560px]:text-[1rem] text-white">
-          Simplicity Meets <span className="text-yellow-400">Creativity</span>
-            </p>
-        </h1>
-      </div>
+    <footer
+      className="w-full bg-gradient-to-b from-[#020617] to-[#1e293b]
+      border-t-[3px] border-amber-400 py-16"
+    >
+      <div className="max-w-7xl mx-auto flex justify-around items-center
+      max-[900px]:flex-col gap-12 px-6">
 
-      <div className="flex flex-col max-[900px]:m-5">
-        <div className="flex items-center">
-          <MdEmail className="text-3xl max-[1150px]:text-[1.5rem] text-white mr-2 max-[560px]:text-[1.3rem] max-[900px]:text-[2rem] font-bold" />
-          <p className="text-2xl max-[1150px]:text-[1.3rem] text-yellow-400 max-[700px]:text-[1.2rem] max-[900px]:text-[1.5rem] max-[560px]:text-[1rem] max-[560px]:m-0 m-2 font-sans font-bold">
-            areeb<span className="text-white">farooq549</span>@gmail.<span className="text-white">com</span>
+        {/* Logo Section */}
+        <motion.div
+          variants={item}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1
+            className={`text-5xl max-[900px]:text-6xl max-[560px]:text-4xl
+            font-bold text-amber-400 ${headerfont.className}`}
+          >
+            <span className="text-white">AR</span>EEB
+            <span className="text-white">IX IN</span>FO
+          </h1>
+          <p className="text-lg mt-2 font-bold text-gray-200">
+            Simplicity Meets <span className="text-amber-400">Creativity</span>
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex items-center">
-          <TbWorld className="text-3xl max-[1150px]:text-[1.5rem] text-white mr-2 max-[560px]:text-[1.3rem] max-[900px]:text-[2rem] font-bold" />
-          <p className="text-2xl max-[1150px]:text-[1.3rem] text-yellow-400 max-[700px]:text-[1.2rem] max-[900px]:text-[1.5rem] max-[560px]:text-[1rem] max-[560px]:m-0 m-2 font-sans font-bold">areeb<span className="text-white">ix-point</span>.vercel.<span className="text-white">app</span></p>
-        </div>
+        {/* Contact Info */}
+        <motion.div
+          variants={item}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex flex-col gap-4"
+        >
+          {[
+            {
+              icon: <MdEmail />,
+              text: <>areeb<span className="text-white">farooq549</span>@gmail.<span className="text-white">com</span></>,
+            },
+            {
+              icon: <TbWorld />,
+              text: <>areeb<span className="text-white">ix-point</span>.vercel.<span className="text-white">app</span></>,
+            },
+            {
+              icon: <RiWhatsappFill />,
+              text: <>037<span className="text-white">09180</span>147</>,
+            },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ x: 6 }}
+              className="flex items-center gap-3 cursor-pointer"
+            >
+              <span className="text-3xl text-white">{item.icon}</span>
+              <p className="text-xl text-amber-400 font-bold font-sans">
+                {item.text}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
 
-        <div className="flex items-center">
-          <RiWhatsappFill className="text-3xl max-[1150px]:text-[1.5rem] text-white mr-2 max-[560px]:text-[1.3rem] max-[900px]:text-[2rem] font-bold" />
-          <p className="text-2xl max-[1150px]:text-[1.3rem] text-yellow-400 max-[700px]:text-[1.2rem] max-[900px]:text-[1.5rem] max-[560px]:text-[1rem] max-[560px]:m-0 m-2 font-sans font-bold">037<span className="text-white">09180</span>147</p>
-        </div>
+        {/* Message */}
+        <motion.div
+          variants={item}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className={`text-white text-xl max-w-md text-center font-bold ${headerfont.className}`}
+        >
+          <p>
+            I hope you’ve gotten to know me better through my work.
+            <span className="max-[390px]:hidden">
+              {" "}Your support means everything, and I look forward to sharing more with you.
+            </span>
+            <br />
+            Let’s continue this journey together.
+          </p>
+        </motion.div>
       </div>
 
-        <div className="flex flex-col justify-center items-center">
-            {/* <h1 className="text-2xl font-sans font-bold text-orange-500">I HOPE YOU KNOW ME WELL NOW</h1> */}
-            <div className={`w-[25rem] max-[1150px]:w-[19rem] max-[700px]:text-[1.7rem] max-[560px]:text-[1.2rem] text-white max-[560px]:w-[90vw] max-[560px]:my-4 max-[900px]:w-[75vw] max-[900px]:my-7 max-[900px]:text-[1.5rem] m-1 text-xl font-bold ${headerfont.className}`}><center><p>I hope you’ve gotten to know me better through my work. <span className="max-[390px]:hidden"> Your support means everything, and I look forward to sharing more with you.</span> Let’s continue this journey together—stay connected for more updates and exciting new projects.</p></center>
-            </div>
-        </div>
+      {/* Bottom Line */}
+      <div className="mt-12 text-center text-sm text-gray-400">
+        © {new Date().getFullYear()} Areebix Info — All Rights Reserved
+      </div>
+    </footer>
+  )
+}
 
-    </div>
-  );
-};
-
-export default Footer;
+export default Footer
