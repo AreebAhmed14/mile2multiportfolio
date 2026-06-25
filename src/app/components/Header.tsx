@@ -13,6 +13,15 @@ const navfont = Caveat_Brush({ subsets: ["latin"], weight: ["400"] })
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  // Navigation Items with their structural links mapped perfectly
+  const navItems = [
+    { name: "Home", path: "/#home" },
+    { name: "About", path: "/#about" },
+    { name: "Education", path: "/Education" },
+    { name: "Skills", path: "/#skills" },
+    { name: "Projects", path: "/Projects" },
+  ]
+
   return (
     <header
       id="home"
@@ -33,22 +42,17 @@ const Header = () => {
 
       {/* Desktop Nav */}
       <ul className="flex gap-8 max-[790px]:hidden">
-        {["Home", "About", "Education", "Skills", "Projects"].map(
-          (item, index) => (
-            <Link
-              key={index}
-              href={item === "Education" ? "/Education" : item === "Projects" ? "/Projects" : "/"}
+        {navItems.map((item, index) => (
+          <Link key={index} href={item.path}>
+            <motion.li
+              whileHover={{ scale: 1.15 }}
+              className={`relative text-white font-bold text-[1.4rem] cursor-pointer ${headerfont.className}`}
             >
-              <motion.li
-                whileHover={{ scale: 1.15 }}
-                className={`relative text-white font-bold text-[1.4rem] cursor-pointer ${headerfont.className}`}
-              >
-                {item}
-                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-amber-400 transition-all duration-300 group-hover:w-full"></span>
-              </motion.li>
-            </Link>
-          )
-        )}
+              {item.name}
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-amber-400 transition-all duration-300 group-hover:w-full"></span>
+            </motion.li>
+          </Link>
+        ))}
       </ul>
 
       {/* Menu Icon */}
@@ -69,7 +73,7 @@ const Header = () => {
             exit={{ x: "100%" }}
             transition={{ duration: 0.4 }}
             className="fixed top-0 left-0 w-full h-screen
-            bg-gradient-to-b from-[#020617] to-[#1e293b]"
+            bg-gradient-to-b from-[#020617] to-[#1e293b] z-50"
           >
             <div className="h-[15vh] flex justify-end items-center px-6 border-b border-amber-400">
               <motion.div
@@ -82,30 +86,20 @@ const Header = () => {
             </div>
 
             <ul className="flex flex-col items-center justify-center h-[85vh] gap-10">
-              {["HOME", "ABOUT", "EDUCATION", "SKILLS", "PROJECTS"].map(
-                (item, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`text-3xl text-amber-400 font-bold cursor-pointer ${navfont.className}`}
-                  >
-                    <Link
-                      href={
-                        item === "EDUCATION"
-                          ? "/Education"
-                          : item === "PROJECTS"
-                          ? "/Projects"
-                          : "/"
-                      }
-                    >
-                      {item}
-                    </Link>
-                  </motion.li>
-                )
-              )}
+              {navItems.map((item, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`text-3xl text-amber-400 font-bold cursor-pointer ${navfont.className}`}
+                >
+                  <Link href={item.path}>
+                    {item.name.toUpperCase()}
+                  </Link>
+                </motion.li>
+              ))}
             </ul>
           </motion.div>
         )}

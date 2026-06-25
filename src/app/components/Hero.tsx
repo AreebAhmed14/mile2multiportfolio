@@ -71,7 +71,7 @@ const Hero = () => {
         </div>
 
         {/* CV BUTTON */}
-        <Link href="/mycv.pdf" target="_blank">
+        <Link href="/AreebResume.pdf" target="_blank">
           <button
             className={`mt-6 px-6 py-3 rounded-xl text-white
             bg-amber-400 shadow-[0_0_30px_rgba(251,191,36,0.4)]
