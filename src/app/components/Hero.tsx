@@ -46,7 +46,7 @@ const Hero = () => {
         {/* SOCIAL ICONS */}
         <div className="flex mt-4">
           <Link
-            href="https://www.linkedin.com/in/mohammad-areeb-856a94315/"
+            href="https://www.linkedin.com/in/muhammad-areeb-856a94315/"
             target="_blank"
             className="m-5 text-[2.5rem] text-white hover:text-amber-400 transition-colors"
           >
