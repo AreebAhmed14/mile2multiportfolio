@@ -1,54 +1,72 @@
 "use client"
 
 import React from "react"
-import { Caveat_Brush } from "next/font/google"
-
-const caveatBrush = Caveat_Brush({
-  weight: ["400"],
-  style: "normal",
-  subsets: ["latin"],
-})
+import { motion } from "framer-motion"
 
 const About = () => {
   return (
     <section
       id="about"
-      className="w-full flex flex-col items-center py-16 px-6 relative overflow-hidden border-b-[6px] border-amber-400"
-      style={{
-        background: "linear-gradient(to right, #020617, #1e293b, #020617)", // same dark gradient as Header/Hero
-      }}
+      className="w-full min-h-screen flex flex-col items-center justify-center py-20 px-4 md:px-8 relative overflow-hidden bg-[#020617]"
     >
-      {/* subtle inner glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          boxShadow: "inset 0 0 100px 20px rgba(251,191,36,0.08)", // soft amber glow
-          zIndex: 0,
-          borderRadius: "1rem",
-        }}
-      ></div>
+      {/* Tech Ambience and Glow Particles */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-cyan-500/5 rounded-full blur-[140px]" />
+        <div 
+          className="absolute inset-0 opacity-[0.02]" 
+          style={{
+            backgroundImage: "radial-gradient(circle, #22d3ee 1px, transparent 1px)",
+            backgroundSize: "28px 28px"
+          }}
+        />
+      </div>
 
-      <h1
-        className={`text-5xl font-bold text-white mb-12 relative z-10 ${caveatBrush.className} max-[400px]:text-4xl`}
+      {/* Heading Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 mb-12 text-center"
       >
-        ABOUT<span className="text-amber-400"> ME</span>
-      </h1>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-wide font-sans">
+          ABOUT <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 drop-shadow-[0_2px_8px_rgba(34,211,238,0.2)]">ME</span>
+        </h1>
+        <div className="h-[2px] w-12 bg-cyan-500 mx-auto mt-3 rounded-full opacity-60" />
+      </motion.div>
 
-      <p
-        className="text-[1.8rem] max-[850px]:text-[1.5rem] max-[750px]:text-xl max-[570px]:text-[1.2rem] max-[400px]:text-[1.1rem] text-white w-[90%] mb-6 relative z-10 font-sans font-bold text-center"
+      {/* Content Glassmorphic Container */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, delay: 0.1 }}
+        className="relative z-10 max-w-4xl w-full mx-auto p-6 sm:p-10 md:p-12 rounded-2xl bg-slate-900/30 backdrop-blur-xl border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col gap-6 md:gap-8"
       >
-        <span className="text-amber-400">&quot;</span>
-        I am Areeb, a student of NED University of Engineering and Technology, pursuing a degree in Chemical Engineering. Alongside my studies, I’m an Agentic AI developer, web designer, and developer with a passion for building functional and visually engaging digital experiences.
-        <span className="text-amber-400">&quot;</span>
-      </p>
+        {/* Decorative corner tag */}
+        {/* <div className="absolute top-4 left-4 font-mono text-xs text-cyan-500/40 select-none">&lt;developer_profile&gt;</div>
+        <div className="absolute bottom-4 right-4 font-mono text-xs text-cyan-500/40 select-none">&lt;/profile&gt;</div> */}
 
-      <p
-        className="text-[1.8rem] max-[850px]:text-[1.5rem] max-[750px]:text-xl max-[570px]:text-[1.2rem] max-[400px]:text-[1.1rem] text-white w-[90%] mb-10 relative z-10 font-sans font-bold text-center"
-      >
-        <span className="text-amber-400">&quot;</span>
-        Currently, I am diving deeper into modern technologies like TypeScript, Next.js, Python, and Node.js to expand my skill set. My goal is to keep evolving in the tech space, stay ahead of trends, and contribute to innovative solutions.
-        <span className="text-amber-400">&quot;</span>
-      </p>
+        <motion.p 
+          whileHover={{ x: 4 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="text-base sm:text-lg md:text-xl text-slate-300 font-medium leading-relaxed font-sans text-center md:text-left border-l-2 border-transparent md:hover:border-cyan-400/50 pl-0 md:hover:pl-4 transition-all duration-300"
+        >
+          <span className="text-cyan-400 font-serif text-2xl mr-1">&ldquo;</span>
+          I am Areeb, a student at NED University of Engineering and Technology, pursuing a degree in Chemical Engineering. Alongside my core engineering disciplines, I operate as an Agentic AI developer and full-stack web designer, creating high-performance, architecturally sound, and visually optimized autonomous digital systems.
+          <span className="text-cyan-400 font-serif text-2xl ml-1">&rdquo;</span>
+        </motion.p>
+
+        <motion.p 
+          whileHover={{ x: 4 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="text-base sm:text-lg md:text-xl text-slate-300 font-medium leading-relaxed font-sans text-center md:text-left border-l-2 border-transparent md:hover:border-cyan-400/50 pl-0 md:hover:pl-4 transition-all duration-300"
+        >
+          <span className="text-cyan-400 font-serif text-2xl mr-1">&ldquo;</span>
+          Currently, my focus is directed deep into constructing fluid pipelines using TypeScript, Next.js, Python, and Node.js. My goal is to continually push structural boundaries in autonomous systems, architect scalable software models, and build high-grade interactive infrastructure.
+          <span className="text-cyan-400 font-serif text-2xl ml-1">&rdquo;</span>
+        </motion.p>
+      </motion.div>
     </section>
   )
 }

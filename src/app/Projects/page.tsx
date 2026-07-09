@@ -3,43 +3,38 @@
 import React from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Caveat_Brush } from "next/font/google"
-
-const caveatBrush = Caveat_Brush({
-  weight: ["400"],
-  subsets: ["latin"],
-})
+import { FiArrowUpRight } from "react-icons/fi"
 
 const projects = [
   {
     title: "Jeeuny AI",
-    desc: "An intelligent AI chatbot designed for interactive conversations",
+    desc: "An autonomous AI agent orchestrator built for highly complex contextual reasoning and multi-agent operations.",
     link: "https://jeeuny-ai.vercel.app",
-    color: "from-blue-600 to-indigo-500",
+    tags: ["CrewAI", "LangChain", "Python", "Next.js"],
   },
   {
     title: "Jeeuty Voice",
-    desc: "An advanced voice-activated AI agent for seamless voice commands",
+    desc: "An advanced, real-time voice-activated AI assistant optimized for low-latency cognitive vocal commands.",
     link: "https://jeeuty-voice.vercel.app",
-    color: "from-purple-600 to-indigo-500",
+    tags: ["Voice AI", "Python", "WebSockets"],
   },
   {
     title: "Resuminator",
-    desc: "Takes user information and dynamically generates professional CVs",
+    desc: "A structural algorithmic engine that parses client inputs to dynamically generate clean ATS-friendly CVs.",
     link: "https://resuminator.netlify.app",
-    color: "from-teal-600 to-cyan-500",
+    tags: ["React", "TypeScript", "Tailwind CSS"],
   },
   {
     title: "Shout Unit Converter",
-    desc: "A smart application to convert different unit values instantly",
+    desc: "A high-precision scientific application configured to execute multi-variable engineering unit shifts.",
     link: "https://shoutunitconvert.streamlit.app",
-    color: "from-orange-600 to-amber-500",
+    tags: ["Streamlit", "Python", "Computation"],
   },
   {
     title: "Pic Extent Converter",
-    desc: "Effortlessly changes and converts picture extensions and formats",
+    desc: "A matrix-level image processing asset designed to manipulate, transcode, and adapt graphic file extensions.",
     link: "https://pic-exten-convert.streamlit.app",
-    color: "from-emerald-600 to-green-500",
+    tags: ["Image Processing", "Python", "Streamlit"],
   },
 ]
 
@@ -47,48 +42,91 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="w-full min-h-screen py-20 px-6 flex flex-col items-center relative"
-      style={{ background: "linear-gradient(to right, #020617, #1e293b, #020617)" }}
+      className="w-full min-h-screen py-24 px-6 flex flex-col items-center justify-center relative overflow-hidden bg-[#020617]"
     >
-      <motion.h1
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className={`text-5xl font-bold mb-12 text-white relative z-10 ${caveatBrush.className} max-[400px]:text-4xl`}
-      >
-        MY <span className="text-amber-400">PROJECTS</span>
-      </motion.h1>
+      {/* Background Tech Network Effect */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[30%] left-[-10%] w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[150px]" />
+        <div className="absolute bottom-[25%] right-[-10%] w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[150px]" />
+        <div 
+          className="absolute inset-0 opacity-[0.015]" 
+          style={{
+            backgroundImage: "radial-gradient(circle, #22d3ee 1px, transparent 1px)",
+            backgroundSize: "24px 24px"
+          }}
+        />
+      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-[1400px]">
+      {/* Heading */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 mb-16 text-center"
+      >
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-wide font-sans">
+          FEATURED <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 drop-shadow-[0_2px_8px_rgba(34,211,238,0.2)]">PROJECTS</span>
+        </h1>
+        <div className="h-[2px] w-12 bg-cyan-500 mx-auto mt-3 rounded-full opacity-60" />
+      </motion.div>
+
+      {/* Projects Grid System */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl relative z-10">
         {projects.map((proj, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.2, duration: 0.6 }}
-            className="relative group rounded-2xl"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: index * 0.05, duration: 0.5 }}
+            whileHover={{ y: -6 }}
+            className="relative group rounded-2xl h-full flex flex-col"
           >
-            {/* Animated Glow Effect (Behind the card - z-0) */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-300 blur-2xl opacity-40 group-hover:opacity-60 transition-all duration-500 rounded-2xl z-0"></div>
+            {/* Hidden Neon Aura Radial Reveal */}
+            <div className="absolute -inset-px bg-gradient-to-b from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl z-0" />
+            <div className="absolute inset-4 bg-cyan-500/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 z-0" />
 
-            {/* Main Content Card (Brought to front - z-10) */}
-            <div className={`relative z-10 h-full flex flex-col justify-between p-6 rounded-2xl shadow-2xl overflow-hidden bg-gradient-to-br ${proj.color} hover:scale-105 transition-all duration-500`}>
+            {/* Main Interactive Glass Frame */}
+            <div className="relative z-10 flex-1 flex flex-col justify-between p-6 rounded-2xl bg-slate-900/40 backdrop-blur-xl border border-white/5 shadow-xl transition-all duration-500 overflow-hidden group-hover:border-cyan-500/20">
+              
               <div>
-                <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">
+                {/* Meta Tags Row */}
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {proj.tags.map((tag, tIdx) => (
+                    <span 
+                      key={tIdx} 
+                      className="font-mono text-[10px] font-bold tracking-wider text-cyan-400/80 bg-cyan-500/5 border border-cyan-500/10 px-2 py-0.5 rounded"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Title */}
+                <h2 className="text-xl font-bold text-white tracking-wide group-hover:text-cyan-400 transition-colors duration-300">
                   {proj.title}
                 </h2>
-                <p className="text-white/80 mb-5 group-hover:text-white transition-colors">{proj.desc}</p>
+
+                {/* Description */}
+                <p className="text-slate-400 text-sm mt-2 leading-relaxed font-sans font-medium">
+                  {proj.desc}
+                </p>
               </div>
               
-              <Link
-                href={proj.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="self-start px-4 py-2 rounded-lg bg-amber-400 text-black font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
-                Visit
-              </Link>
+              {/* Clean Tech Deployment Anchor Link */}
+              <div className="mt-6 pt-4 border-t border-white/[0.03]">
+                <Link
+                  href={proj.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm font-bold tracking-wider text-slate-300 hover:text-cyan-400 font-sans transition-colors duration-300 group/link"
+                >
+                  VISIT
+                  <FiArrowUpRight className="text-base transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300 text-slate-500 group-hover/link:text-cyan-400" />
+                </Link>
+              </div>
+
             </div>
           </motion.div>
         ))}
