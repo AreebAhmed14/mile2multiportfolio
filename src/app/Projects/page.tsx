@@ -36,6 +36,12 @@ const projects = [
     link: "https://pic-exten-convert.streamlit.app",
     tags: ["Image Processing", "Python", "Streamlit"],
   },
+  {
+  "title": "Aura DevLabs",
+  "desc": "A premium B2B micro-SaaS and developer infrastructure marketplace built with an image-free terminal aesthetic for rapid deployment optimization.",
+  "link": "https://aura-devlabs.vercel.app/",
+  "tags": ["Next.js", "Tailwind CSS", "Context API", "Lucide React"],
+}
 ]
 
 const Projects = () => {
