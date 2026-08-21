@@ -9,7 +9,7 @@ const Skills = () => {
     { name: "AGENTIC AI", level: 60 },
     { name: "PYTHON", level: 80 },
     { name: "NEXT JS", level: 60 },
-    { name: "WEB DEV", level: 85 },
+    { name: "OPENCLAW", level: 75 },
   ]
 
   // Supporting & domain components (Compact Horizontal Bars without text percentage)

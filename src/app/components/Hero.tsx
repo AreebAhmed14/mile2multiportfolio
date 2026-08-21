@@ -17,7 +17,6 @@ const Hero = () => {
 
   const [index, setIndex] = useState(0)
 
-  // Pure React/Framer text switcher (No broken CSS keyframes)
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % titles.length)
@@ -26,7 +25,7 @@ const Hero = () => {
   }, [titles.length])
 
   return (
-    <section id="home" className="relative w-full min-h-screen bg-[#020617] flex flex-col md:flex-row justify-center items-center gap-10 lg:gap-20 px-6 md:px-16 pt-32 pb-16 overflow-hidden">
+    <section id="home" className="relative w-full min-h-screen bg-[#020617] flex flex-col md:flex-row justify-center items-center gap-8 lg:gap-16 px-6 md:px-16 pt-24 pb-12 overflow-hidden">
       
       {/* Background Ambience */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -41,25 +40,53 @@ const Hero = () => {
         />
       </div>
 
-      {/* IMAGE AREA */}
+      {/* IMAGE AREA (Optimized Responsive Sizing & Proportional Image Fit) */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative flex justify-center items-center z-10 w-64 h-64 sm:w-80 sm:h-80 md:w-[25rem] md:h-[25rem] order-first md:order-last"
+        className="relative flex justify-center items-center z-10 w-full max-w-[22rem] h-[24rem] sm:h-[28rem] md:h-[32rem] order-first md:order-last group"
       >
-        <div className="absolute inset-0 border border-dashed border-cyan-500/20 rounded-full animate-[spin_60s_linear_infinite]" />
-        <div className="absolute inset-4 rounded-full bg-cyan-500/10 blur-xl" />
+        {/* Ambient Glow behind circle */}
+        <div className="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-cyan-500/10 blur-2xl pointer-events-none" />
 
-        <div className="relative w-[92%] h-[92%] rounded-full overflow-hidden border-2 border-cyan-500/30 shadow-[0_0_30px_rgba(34,211,238,0.15)] bg-slate-950">
-          <Image
-            src="/static/me.jpg"
-            alt="Muhammad Areeb"
-            fill
-            className="object-cover rounded-full transition-all duration-500 transform scale-100 hover:scale-105"
-            priority
-          />
-        </div>
+        {/* Main Circular Box WITH Motion & Optimized Image Scale */}
+        <motion.div 
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-2 border-cyan-500/40 shadow-[0_0_40px_rgba(34,211,238,0.2)] bg-slate-950 overflow-hidden flex items-end justify-center transition-all duration-500 group-hover:border-cyan-400 group-hover:shadow-[0_0_60px_rgba(34,211,238,0.4)]"
+        >
+          {/* Inner PNG Image (Balanced scale to prevent awkward cropping and excess space) */}
+          <div className="absolute inset-0 w-full h-full flex justify-center items-end">
+            <div className="relative w-[115%] h-[115%] flex justify-center items-end">
+              <Image
+                src="/static/mine_pic.png"
+                alt="Muhammad Areeb"
+                fill
+                className="object-contain object-bottom drop-shadow-[0_15px_25px_rgba(34,211,238,0.2)]"
+                priority
+              />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Floating Bubble 1 (Top Left - Glowing Tech Dot) */}
+        <motion.div
+          animate={{ y: [0, -8, 0], x: [0, 4, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-8 left-2 sm:left-8 w-10 h-10 sm:w-12 sm:h-12 bg-slate-900/90 backdrop-blur-md border border-cyan-500/40 rounded-2xl shadow-[0_0_15px_rgba(34,211,238,0.2)] flex items-center justify-center z-20"
+        >
+          <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]" />
+        </motion.div>
+
+        {/* Floating Bubble 2 (Bottom Right - Glowing Tech Dot) */}
+        <motion.div
+          animate={{ y: [0, 8, 0], x: [0, -4, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-10 right-2 sm:right-8 w-9 h-9 sm:w-10 sm:h-10 bg-slate-900/90 backdrop-blur-md border border-cyan-500/40 rounded-full shadow-[0_0_15px_rgba(34,211,238,0.2)] flex items-center justify-center z-20"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+        </motion.div>
       </motion.div>
 
       {/* TEXT AREA */}
@@ -73,13 +100,11 @@ const Hero = () => {
           Hi, I am
         </h2>
 
-        {/* Text breaking handles to support extreme mobile screens */}
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mt-2 tracking-wide leading-tight font-sans break-words w-full">
           MUHAMMAD <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-cyan-300 to-blue-400 drop-shadow-[0_2px_10px_rgba(34,211,238,0.2)]">AREEB</span>
           <div>FAROOQ</div> 
         </h1>
 
-        {/* Rock Solid Framed Scrolling Component */}
         <div className="h-10 mt-4 overflow-hidden relative w-full flex items-center justify-center md:justify-start">
           <AnimatePresence mode="wait">
             <motion.span
