@@ -25,7 +25,7 @@ const Hero = () => {
   }, [titles.length])
 
   return (
-    <section id="home" className="relative w-full min-h-screen bg-[#020617] flex flex-col md:flex-row justify-center items-center gap-8 lg:gap-16 px-6 md:px-16 pt-24 pb-12 overflow-hidden">
+    <section id="home" className="relative w-full min-h-screen bg-[#020617] flex flex-col md:flex-row justify-center items-center gap-8 lg:gap-16 px-6 md:px-16 pt-28 pb-12 overflow-hidden">
       
       {/* Background Ambience */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -40,50 +40,57 @@ const Hero = () => {
         />
       </div>
 
-      {/* IMAGE AREA (Optimized Responsive Sizing & Proportional Image Fit) */}
+      {/* IMAGE AREA */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative flex justify-center items-center z-10 w-full max-w-[22rem] h-[24rem] sm:h-[28rem] md:h-[32rem] order-first md:order-last group"
+        className="relative flex justify-center items-center z-20 w-full max-w-[22rem] h-[24rem] sm:h-[28rem] md:h-[32rem] order-first md:order-last group"
       >
         {/* Ambient Glow behind circle */}
         <div className="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-cyan-500/10 blur-2xl pointer-events-none" />
 
-        {/* Main Circular Box WITH Motion & Optimized Image Scale */}
+        {/* Outer Floating Motion Wrapper */}
         <motion.div 
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-2 border-cyan-500/40 shadow-[0_0_40px_rgba(34,211,238,0.2)] bg-slate-950 overflow-hidden flex items-end justify-center transition-all duration-500 group-hover:border-cyan-400 group-hover:shadow-[0_0_60px_rgba(34,211,238,0.4)]"
+          className="relative flex items-center justify-center"
         >
-          {/* Inner PNG Image (Balanced scale to prevent awkward cropping and excess space) */}
-          <div className="absolute inset-0 w-full h-full flex justify-center items-end">
-            <div className="relative w-[115%] h-[115%] flex justify-center items-end">
-              <Image
-                src="/static/mine_pic.png"
-                alt="Muhammad Areeb"
-                fill
-                className="object-contain object-bottom drop-shadow-[0_15px_25px_rgba(34,211,238,0.2)]"
-                priority
-              />
+          {/* Main Circular Frame */}
+          <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-2 border-cyan-500/40 shadow-[0_0_40px_rgba(34,211,238,0.2)] bg-slate-950 overflow-hidden flex items-end justify-center transition-all duration-500 group-hover:border-cyan-400 group-hover:shadow-[0_0_60px_rgba(34,211,238,0.4)]">
+            
+            {/* Single Image Instance shifted further down (top-2 / top-3) to submerge the lower crop area entirely */}
+            <div className="absolute inset-0 w-full h-full flex justify-center items-end pointer-events-none">
+              <div className="relative w-[130%] h-[130%] top-2 sm:top-3 flex justify-center items-end">
+                <Image
+                  src="/static/mine_pic3.png"
+                  alt="Muhammad Areeb Farooq"
+                  fill
+                  className="object-contain object-bottom drop-shadow-[0_15px_25px_rgba(34,211,238,0.2)]"
+                  priority
+                />
+              </div>
             </div>
+
+            {/* Bottom Gradient Fade to cleanly ground the lower frame */}
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent pointer-events-none z-10" />
           </div>
         </motion.div>
 
-        {/* Floating Bubble 1 (Top Left - Glowing Tech Dot) */}
+        {/* Floating Bubble 1 (Top Left) */}
         <motion.div
           animate={{ y: [0, -8, 0], x: [0, 4, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-8 left-2 sm:left-8 w-10 h-10 sm:w-12 sm:h-12 bg-slate-900/90 backdrop-blur-md border border-cyan-500/40 rounded-2xl shadow-[0_0_15px_rgba(34,211,238,0.2)] flex items-center justify-center z-20"
+          className="absolute top-2 left-2 sm:left-4 w-10 h-10 sm:w-12 sm:h-12 bg-slate-900/90 backdrop-blur-md border border-cyan-500/40 rounded-2xl shadow-[0_0_15px_rgba(34,211,238,0.2)] flex items-center justify-center z-30"
         >
           <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]" />
         </motion.div>
 
-        {/* Floating Bubble 2 (Bottom Right - Glowing Tech Dot) */}
+        {/* Floating Bubble 2 (Bottom Right) */}
         <motion.div
           animate={{ y: [0, 8, 0], x: [0, -4, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-10 right-2 sm:right-8 w-9 h-9 sm:w-10 sm:h-10 bg-slate-900/90 backdrop-blur-md border border-cyan-500/40 rounded-full shadow-[0_0_15px_rgba(34,211,238,0.2)] flex items-center justify-center z-20"
+          className="absolute bottom-6 right-2 sm:right-4 w-9 h-9 sm:w-10 sm:h-10 bg-slate-900/90 backdrop-blur-md border border-cyan-500/40 rounded-full shadow-[0_0_15px_rgba(34,211,238,0.2)] flex items-center justify-center z-30"
         >
           <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
         </motion.div>
